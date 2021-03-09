@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Edit Pet{% endblock %}
+{% block content %}
+
+<h1 class="display-1 mb-4 text-center">Edit pet details</h1>
+<form method="POST">
+{{ form.hidden_tag() }}
+
+<div class="form-group mb-3">
+    <strong>{{ form.photo_url.label(class_="form-label") }}</strong>
+    {{ form.photo_url(class_="form-control") }}
+
+    {% for err in form.photo_url.errors %}
+        <small class="form-text text-danger">
+            {{ err }}
+        </small>
+    {% endfor %}
+</div>
+
+<div class="form-group mb-3">
+    <strong>{{ form.notes.label(class_="form-label") }}</strong>
+    {{ form.notes(class_="form-control") }}
+
+    {% for err in form.notes.errors %}
+        <small class="form-text text-danger">
+            {{ err }}
+        </small>
+    {% endfor %}
+</div>
+
+<div class="form-group mb-3">
+    <strong>{{ form.available.label(class_="form-check-label") }}</strong>
+    {{ form.available(class_="form-check-input") }}
+
+    {% for err in form.available.errors %}
+        <small class="form-text text-danger">
+            {{ err }}
+        </small>
+    {% endfor %}
+</div>
+
+<a href="/{{pet_id}}" class="btn btn-lg btn-danger float-end ms-2">Cancel</a>
+<button class="btn btn-lg btn-success float-end">Save</button>
+</form>
+
+{% endblock %}
